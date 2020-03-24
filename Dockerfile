@@ -39,8 +39,11 @@ USER root
 # if you start a new container using volumes
 RUN cp -r /usr/local/share/moin/data /usr/local/share/moin/bootstrap-data
 
-RUN chown -R www-data:www-data /usr/local/share/moin/data
+RUN chown -R www-data:www-data /usr/local/share/moin/
 ADD logo.png /usr/local/lib/python2.7/dist-packages/MoinMoin/web/static/htdocs/common/
+
+ADD theme/memodump.py /usr/local/share/moin/data/plugin/theme/
+ADD theme/memodump /usr/local/lib/python2.7/dist-packages/MoinMoin/web/static/htdocs/memodump
 
 # Configure nginx
 ADD nginx.conf /etc/nginx/
